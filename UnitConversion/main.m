@@ -7,16 +7,62 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "UnitPool.h"
 
-int main (int argc, const char * argv[])
-{
+NSString * ANFileReadLine (FILE * aFile);
+void ANFilePrint (NSString * string);
 
+int main (int argc, const char * argv[]) {
 	@autoreleasepool {
-	    
-	    // insert code here...
-	    NSLog(@"Hello, World!");
-	    
+		UnitPool * pool = [UnitPool sharedInstance];
+		
+		ANFilePrint(@"Have: ");
+		NSString * have = ANFileReadLine(stdin);
+		ANFilePrint(@"Want: ");
+		NSString * want = ANFileReadLine(stdin);
+		
+		Unit * haveUnit = [pool unitWithName:have];
+		Unit * wantUnit = [pool unitWithName:want];
+		
+		if (!haveUnit || !wantUnit) {
+			ANFilePrint(@"Units not found!\n");
+		} else {
+			double equivalency = [pool factorFromUnit:haveUnit toUnit:wantUnit];
+			if (isnan(equivalency)) {
+				ANFilePrint(@"No equivalency chain found.\n");
+			} else {
+				printf("There are %f %ss in a %s\n", equivalency, 
+					   [[haveUnit longName] UTF8String],
+					   [[wantUnit longName] UTF8String]);
+			}
+		}
 	}
-    return 0;
+	
+	@autoreleasepool {
+		while (true) {
+			[NSThread sleepForTimeInterval:1];
+		}
+	}
+	
+	return 0;
+}
+
+NSString * ANFileReadLine (FILE * aFile) {
+	NSMutableString * string = [NSMutableString string];
+	int c = 0;
+	while ((c = fgetc(aFile)) != EOF) {
+		if (c != '\r') {
+			if (c == '\n') {
+				break;
+			}
+			[string appendFormat:@"%c", (char)c];
+		}
+	}
+	return string;
+}
+
+void ANFilePrint (NSString * string) {
+	printf("%s", [string UTF8String]);
+	fflush(stdout);
 }
 

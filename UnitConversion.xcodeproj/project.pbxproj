@@ -10,6 +10,10 @@
 		FA8319BF145622B10027230C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA8319BE145622B10027230C /* Foundation.framework */; };
 		FA8319C2145622B10027230C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8319C1145622B10027230C /* main.m */; };
 		FA8319C6145622B10027230C /* UnitConversion.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = FA8319C5145622B10027230C /* UnitConversion.1 */; };
+		FA8319CF145624940027230C /* Unit.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8319CE145624940027230C /* Unit.m */; };
+		FA8319D2145624D40027230C /* Equivalency.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8319D1145624D40027230C /* Equivalency.m */; };
+		FA8319D5145627EE0027230C /* UnitPool.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8319D4145627EE0027230C /* UnitPool.m */; };
+		FA8319F9145640FF0027230C /* ConvertNode.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8319F8145640FF0027230C /* ConvertNode.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -29,8 +33,17 @@
 		FA8319BA145622B10027230C /* UnitConversion */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = UnitConversion; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA8319BE145622B10027230C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		FA8319C1145622B10027230C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		FA8319C4145622B10027230C /* UnitConversion-Prefix.pch */ = {isa = PBXFileReference; path = "UnitConversion-Prefix.pch"; sourceTree = "<group>"; };
+		FA8319C4145622B10027230C /* UnitConversion-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UnitConversion-Prefix.pch"; sourceTree = "<group>"; };
 		FA8319C5145622B10027230C /* UnitConversion.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = UnitConversion.1; sourceTree = "<group>"; };
+		FA8319CC145622D70027230C /* ConversionConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConversionConst.h; sourceTree = "<group>"; };
+		FA8319CD145624940027230C /* Unit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Unit.h; sourceTree = "<group>"; };
+		FA8319CE145624940027230C /* Unit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Unit.m; sourceTree = "<group>"; };
+		FA8319D0145624D40027230C /* Equivalency.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Equivalency.h; sourceTree = "<group>"; };
+		FA8319D1145624D40027230C /* Equivalency.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Equivalency.m; sourceTree = "<group>"; };
+		FA8319D3145627EE0027230C /* UnitPool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnitPool.h; sourceTree = "<group>"; };
+		FA8319D4145627EE0027230C /* UnitPool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnitPool.m; sourceTree = "<group>"; };
+		FA8319F7145640FF0027230C /* ConvertNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConvertNode.h; sourceTree = "<group>"; };
+		FA8319F8145640FF0027230C /* ConvertNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConvertNode.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +86,12 @@
 		FA8319C0145622B10027230C /* UnitConversion */ = {
 			isa = PBXGroup;
 			children = (
+				FA8319F6145640ED0027230C /* Conversoin */,
+				FA8319CC145622D70027230C /* ConversionConst.h */,
+				FA8319CD145624940027230C /* Unit.h */,
+				FA8319CE145624940027230C /* Unit.m */,
+				FA8319D0145624D40027230C /* Equivalency.h */,
+				FA8319D1145624D40027230C /* Equivalency.m */,
 				FA8319C1145622B10027230C /* main.m */,
 				FA8319C5145622B10027230C /* UnitConversion.1 */,
 				FA8319C3145622B10027230C /* Supporting Files */,
@@ -86,6 +105,17 @@
 				FA8319C4145622B10027230C /* UnitConversion-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FA8319F6145640ED0027230C /* Conversoin */ = {
+			isa = PBXGroup;
+			children = (
+				FA8319D3145627EE0027230C /* UnitPool.h */,
+				FA8319D4145627EE0027230C /* UnitPool.m */,
+				FA8319F7145640FF0027230C /* ConvertNode.h */,
+				FA8319F8145640FF0027230C /* ConvertNode.m */,
+			);
+			name = Conversoin;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,6 +169,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA8319C2145622B10027230C /* main.m in Sources */,
+				FA8319CF145624940027230C /* Unit.m in Sources */,
+				FA8319D2145624D40027230C /* Equivalency.m in Sources */,
+				FA8319D5145627EE0027230C /* UnitPool.m in Sources */,
+				FA8319F9145640FF0027230C /* ConvertNode.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
