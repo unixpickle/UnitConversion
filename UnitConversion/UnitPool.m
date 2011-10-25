@@ -22,7 +22,8 @@
 - (id)init {
 	if ((self = [super init])) {
 		NSMutableArray * unitArray = [NSMutableArray array];
-		__weak __block Unit * (^handleNewBlock)(NSString * shortName) = ^ Unit * (NSString * shortName) {
+		__block FetchUnitBlock handleNewBlock;
+		handleNewBlock = [^ Unit * (NSString * shortName) {
 			for (int j = 0; j < [unitArray count]; j++) {
 				if ([[[unitArray objectAtIndex:j] shortName] isEqualToString:shortName]) {
 					return [unitArray objectAtIndex:j];
@@ -32,12 +33,14 @@
 				const struct CUnit * myUnit = &CUnitList[i];
 				if ([[NSString stringWithUTF8String:myUnit->unitShort] isEqualToString:shortName]) {
 					Unit * aUnit = [[Unit alloc] initWithCUnit:myUnit unitFetcher:handleNewBlock];
-					[unitArray addObject:aUnit];
+					if (aUnit != nil) {
+						[unitArray addObject:aUnit];
+					}
 					return aUnit;
 				}
 			}
 			return nil;
-		};
+		} copy];
 		
 		for (int i = 0; i < CUnitListCount; i++) {
 			const struct CUnit * myUnit = &CUnitList[i];

@@ -14,8 +14,9 @@
 @synthesize shortName;
 @synthesize equivalencies;
 
-- (id)initWithCUnit:(const struct CUnit *)aUnit unitFetcher:(__weak Unit * (^)(NSString * shortName))fetcher {
+- (id)initWithCUnit:(const struct CUnit *)aUnit unitFetcher:(__weak FetchUnitBlock)fetcher {
 	if ((self = [super init])) {
+		callback = fetcher; // consume the argument
 		shortName = [[NSString alloc] initWithUTF8String:aUnit->unitShort];
 		longName = [[NSString alloc] initWithUTF8String:aUnit->unitLong];
 		NSMutableArray * subArray = [NSMutableArray array];
