@@ -16,7 +16,6 @@ typedef Unit * (^ FetchUnitBlock)(NSString * shortName);
 	NSString * longName;
 	NSString * shortName;
 	NSArray * equivalencies;
-	__strong FetchUnitBlock callback;
 }
 
 @property (readonly) NSString * longName;

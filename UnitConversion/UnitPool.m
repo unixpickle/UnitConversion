@@ -49,6 +49,7 @@
 			}
 		}
 		
+		handleNewBlock = nil;
 		units = unitArray;
 	}
 	return self;
