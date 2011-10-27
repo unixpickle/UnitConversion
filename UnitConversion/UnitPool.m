@@ -110,9 +110,9 @@
 	if (!unit) {
 		unit = [self convertFromUnit:anotherUnit toUnit:aUnit];
 		if (!unit) return NAN;
-		return 1.0f / [unit calculateConversionFactor];
+		return [unit calculateConversionFactor];
 	}
-	return [unit calculateConversionFactor];
+	return 1.0f / [unit calculateConversionFactor];
 }
 
 @end

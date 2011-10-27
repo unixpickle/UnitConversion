@@ -7,6 +7,7 @@
 //
 
 #import "Equivalency.h"
+#import "Unit.h"
 
 @implementation Equivalency
 
@@ -26,6 +27,11 @@
 - (Equivalency *)inverseEquivalency {
 	return [[Equivalency alloc] initWithFromUnit:toUnit toUnit:fromUnit
 								conversionFactor:(1.0 / conversionFactor)];
+}
+
+- (NSString *)description {
+	return [NSString stringWithFormat:@"< %@ (%@ -> %@) >", [super description],
+			[fromUnit longName], [toUnit longName]];
 }
 
 @end

@@ -40,8 +40,8 @@
 - (void)addEquivalency:(Equivalency *)equ {
 	// check if we already have it
 	for (int i = 0; i < [equivalencies count]; i++) {
-		Equivalency * equ = [equivalencies objectAtIndex:i];
-		if ([[equ toUnit] isEqualToUnit:[equ toUnit]]) {
+		Equivalency * subEqu = [equivalencies objectAtIndex:i];
+		if ([[subEqu toUnit] isEqualToUnit:[equ toUnit]]) {
 			return;
 		}
 	}
@@ -56,6 +56,10 @@
 		}
 	}
 	return NO;
+}
+
+- (NSString *)description {
+	return [NSString stringWithFormat:@"<%@: %@>", [super description], longName];
 }
 
 @end

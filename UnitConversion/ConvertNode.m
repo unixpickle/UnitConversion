@@ -44,4 +44,8 @@
 	return factor;
 }
 
+- (NSString *)description {
+	return [NSString stringWithFormat:@"%@", currentUnit];
+}
+
 @end

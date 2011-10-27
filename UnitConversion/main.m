@@ -31,8 +31,8 @@ int main (int argc, const char * argv[]) {
 			if (isnan(equivalency)) {
 				ANFilePrint(@"No equivalency chain found.\n");
 			} else {
-				printf("There are %f %ss in a %s\n", equivalency, 
-					   [[haveUnit longName] UTF8String],
+				printf("1 %s = %f %ss\n", [[haveUnit longName] UTF8String],
+					   equivalency, 
 					   [[wantUnit longName] UTF8String]);
 			}
 		}

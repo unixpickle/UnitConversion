@@ -14,8 +14,8 @@ The <tt>UnitPool</tt> class is primarily what should be used for converting betw
 	Unit * seconds = [pool unitWithName:@"second"];
 	Unit * weeks = [pool unitWithName:@"week"];
 	double equiv = [pool factorFromUnit:seconds toUnit:weeks];
-	// there are equiv seconds in a week
+	// there are equiv weeks in a second
 	// so, you can do:
-	double weeksNumber = secondsNumber / equiv;
+	double weeksNumber = secondsNumber * equiv;
 	// or
-	double secondsNumber = weeksNumber * equiv;
+	double secondsNumber = weeksNumber / equiv;

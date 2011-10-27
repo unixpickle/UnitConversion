@@ -45,9 +45,27 @@ static const struct CUnit CUnitList[] = {
 	{"dollar", "dollar", 1, {
 		{"eur", 1.3948}
 	}},
-	{"euro", "eur", 0, {}}
+	{"euro", "eur", 0, {}},
+	// measurement of distance
+	{"inch", "in", 1, {
+		{"ft", 12}
+	}},
+	{"foot", "ft", 2, {
+		{"mi", 5280},
+		{"yd", 3}
+	}},
+	{"yard", "yd", 0, {}},
+	{"mile", "mi", 0, {}},
+	{"centemeter", "cm", 1, {
+		{"m", 100}
+	}},
+	{"meter", "m", 2, {
+		{"yd", 1.0/1.0936133},
+		{"km", 1000}
+	}},
+	{"kilometer", "km", 0, {}}
 };
 
-static const int CUnitListCount = 9;
+static const int CUnitListCount = sizeof(CUnitList)/sizeof(struct CUnit);
 
 #endif
