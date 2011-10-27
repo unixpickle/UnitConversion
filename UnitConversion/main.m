@@ -11,6 +11,7 @@
 
 NSString * ANFileReadLine (FILE * aFile);
 void ANFilePrint (NSString * string);
+void printChain (Unit * have, Unit * want);
 
 int main (int argc, const char * argv[]) {
 	@autoreleasepool {
@@ -34,6 +35,7 @@ int main (int argc, const char * argv[]) {
 				printf("1 %s = %f %ss\n", [[haveUnit longName] UTF8String],
 					   equivalency, 
 					   [[wantUnit longName] UTF8String]);
+				printChain(haveUnit, wantUnit);
 			}
 		}
 	}
@@ -64,5 +66,17 @@ NSString * ANFileReadLine (FILE * aFile) {
 void ANFilePrint (NSString * string) {
 	printf("%s", [string UTF8String]);
 	fflush(stdout);
+}
+
+void printChain (Unit * have, Unit * want) {
+	UnitPool * pool = [UnitPool sharedInstance];
+	ConvertNode * convert = [pool convertFromUnit:have toUnit:want];
+	// print chain (it will be in reverse from destination to original)
+	printf("%s -> ", [[have shortName] UTF8String]);
+	for (NSInteger i = [[convert unitHistory] count] - 1; i > 0; i--) {
+		Equivalency * equ = [[convert unitHistory] objectAtIndex:i];
+		printf("%s -> ", [[[equ fromUnit] shortName] UTF8String]);
+	}
+	printf("%s\n", [[want shortName] UTF8String]);
 }
 

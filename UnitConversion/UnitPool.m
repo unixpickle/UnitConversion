@@ -82,15 +82,15 @@
 	return nil;
 }
 
-- (ConvertNode *)convertFromUnit:(Unit *)aUnit toUnit:(Unit *)anotherUnit {
+- (ConvertNode *)convertFromUnit:(Unit *)sourceUnit toUnit:(Unit *)destinationUnit {
 	NSMutableArray * queue = [[NSMutableArray alloc] init];
 	__block NSMutableArray * used = [[NSMutableArray alloc] init];
-	ConvertNode * rootNode = [[ConvertNode alloc] initWithUnit:aUnit history:[NSArray array]];
+	ConvertNode * rootNode = [[ConvertNode alloc] initWithUnit:destinationUnit history:[NSArray array]];
 	[queue addObject:rootNode];
 	while ([queue count] > 0) {
 		ConvertNode * first = [queue objectAtIndex:0];
 		[queue removeObjectAtIndex:0];
-		if ([[first currentUnit] isEqualToUnit:anotherUnit]) {
+		if ([[first currentUnit] isEqualToUnit:sourceUnit]) {
 			return first;
 		}
 		NSArray * subNodes = [first expandToSubNodes:^BOOL (Unit * aUnit) {
@@ -110,9 +110,9 @@
 	if (!unit) {
 		unit = [self convertFromUnit:anotherUnit toUnit:aUnit];
 		if (!unit) return NAN;
-		return [unit calculateConversionFactor];
+		return 1.0f / [unit calculateConversionFactor];
 	}
-	return 1.0f / [unit calculateConversionFactor];
+	return [unit calculateConversionFactor];
 }
 
 @end
