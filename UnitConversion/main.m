@@ -74,8 +74,8 @@ void printChain (Unit * have, Unit * want) {
 	// print chain (it will be in reverse from destination to original)
 	for (NSInteger i = 0; i < [[convert unitHistory] count]; i++) {
 		Equivalency * equ = [[convert unitHistory] objectAtIndex:i];
-		printf("%s -> ", [[[equ fromUnit] shortName] UTF8String]);
+		printf("%s -> ", [[[equ fromUnit] longName] UTF8String]);
 	}
-	printf("%s\n", [[want shortName] UTF8String]);
+	printf("%s\n", [[want longName] UTF8String]);
 }
 
