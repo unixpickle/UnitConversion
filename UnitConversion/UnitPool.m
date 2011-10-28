@@ -85,12 +85,12 @@
 - (ConvertNode *)convertFromUnit:(Unit *)sourceUnit toUnit:(Unit *)destinationUnit {
 	NSMutableArray * queue = [[NSMutableArray alloc] init];
 	__block NSMutableArray * used = [[NSMutableArray alloc] init];
-	ConvertNode * rootNode = [[ConvertNode alloc] initWithUnit:destinationUnit history:[NSArray array]];
+	ConvertNode * rootNode = [[ConvertNode alloc] initWithUnit:sourceUnit history:[NSArray array]];
 	[queue addObject:rootNode];
 	while ([queue count] > 0) {
 		ConvertNode * first = [queue objectAtIndex:0];
 		[queue removeObjectAtIndex:0];
-		if ([[first currentUnit] isEqualToUnit:sourceUnit]) {
+		if ([[first currentUnit] isEqualToUnit:destinationUnit]) {
 			return first;
 		}
 		NSArray * subNodes = [first expandToSubNodes:^BOOL (Unit * aUnit) {

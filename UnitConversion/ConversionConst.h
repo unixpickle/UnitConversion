@@ -23,47 +23,49 @@ struct CUnit {
 
 static const struct CUnit CUnitList[] = {
 	// measurements of time
-	{"second", "sec", 1, {
-		{"min", 60}
-	}},
+	{"second", "sec", 0, {}},
 	{"minute", "min", 1, {
-		{"hr", 60}
+		{"sec", 60}
 	}},
 	{"hour", "hr", 1, {
-		{"day", 24}
+		{"min", 60}
 	}},
-	{"day", "day", 2, {
-		{"yr", 365},
-		{"week", 7}
+	{"day", "day", 1, {
+		{"hr", 24}
 	}},
-	{"week", "week", 0, {}},
-	{"year", "yr", 0, {}},
+	{"week", "week", 1, {
+		{"day", 7}
+	}},
+	{"year", "yr", 1, {
+		{"day", 365}
+	}},
 	// measurement of money!!!
-	{"peso", "peso", 1, {
-		{"dollar", 13.3750635}
-	}},
+	{"peso", "peso", 0, {}},
 	{"dollar", "dollar", 1, {
-		{"eur", 1.3948}
+		{"peso", 13.3750635}
 	}},
-	{"euro", "eur", 0, {}},
+	{"euro", "eur", 1, {
+		{"dollar", 1.3948}
+	}},
 	// measurement of distance
-	{"inch", "in", 1, {
-		{"ft", 12}
+	{"inch", "in", 0, {}},
+	{"foot", "ft", 1, {
+		{"in", 12}
 	}},
-	{"foot", "ft", 2, {
-		{"mi", 5280},
-		{"yd", 3}
+	{"yard", "yd", 1, {
+		{"ft", 3}
 	}},
-	{"yard", "yd", 0, {}},
-	{"mile", "mi", 0, {}},
-	{"centemeter", "cm", 1, {
-		{"m", 100}
+	{"mile", "mi", 1, {
+		{"ft", 5280},
 	}},
+	{"centemeter", "cm", 0, {}},
 	{"meter", "m", 2, {
-		{"yd", 1.0/1.0936133},
-		{"km", 1000}
+		{"cm", 100},
+		{"yd", 1.0936133}
 	}},
-	{"kilometer", "km", 0, {}}
+	{"kilometer", "km", 1, {
+		{"m", 1000}
+	}}
 };
 
 static const int CUnitListCount = sizeof(CUnitList)/sizeof(struct CUnit);

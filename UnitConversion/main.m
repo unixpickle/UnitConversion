@@ -32,7 +32,7 @@ int main (int argc, const char * argv[]) {
 			if (isnan(equivalency)) {
 				ANFilePrint(@"No equivalency chain found.\n");
 			} else {
-				printf("1 %s = %f %ss\n", [[haveUnit longName] UTF8String],
+				printf("1 %s = %lf %ss\n", [[haveUnit longName] UTF8String],
 					   equivalency, 
 					   [[wantUnit longName] UTF8String]);
 				printChain(haveUnit, wantUnit);
@@ -72,8 +72,7 @@ void printChain (Unit * have, Unit * want) {
 	UnitPool * pool = [UnitPool sharedInstance];
 	ConvertNode * convert = [pool convertFromUnit:have toUnit:want];
 	// print chain (it will be in reverse from destination to original)
-	printf("%s -> ", [[have shortName] UTF8String]);
-	for (NSInteger i = [[convert unitHistory] count] - 1; i > 0; i--) {
+	for (NSInteger i = 0; i < [[convert unitHistory] count]; i++) {
 		Equivalency * equ = [[convert unitHistory] objectAtIndex:i];
 		printf("%s -> ", [[[equ fromUnit] shortName] UTF8String]);
 	}
